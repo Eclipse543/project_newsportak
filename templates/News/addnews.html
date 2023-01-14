@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>Homepage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'News/css/bootstrap.min3.css' %}" rel="stylesheet">
+    <link href="{% static 'News/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'News/bootstrap-icons-1.10.2/bootstrap-icons.css' %}"
+          rel="stylesheet">
+  </head>
+  <body>
+  <div class="container">
+  <div class="row">
+    <h1>Add News</h1>
+    <div class="col-md-6">
+      <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group mb-3">
+          <label for="category">Category</label>
+          <br>
+          <select name="category" id="category">
+            {% for category in categoryData %}
+              <option value="{{ category.slug }}">
+                {{ category.name }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group mb-3">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+          <label for="slug">Slug</label>
+          <input type="text" name="slug" id="slug" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+          <label for="date">Date</label>
+          <input type="text" name="date" id="date" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+          <label for="description">Description</label>
+          <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
+        </div>
+        <div class="form-group mb-3">
+          <label for="image">Image</label>
+          <input type="file" name="image" id="image" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+          <label for="video">Video</label>
+          <input type="file" name="video" id="video" class="form-control" />
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Add</button>
+          <button class="btn btn-primary">
+            <a style="text-decoration:none;
+                      ,background:white"
+               href="{% url 'index' %}">Home</a>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  </div>
+  {% include "News/footer/footer.html" %}
+  </body>
+</html>

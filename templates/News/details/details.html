@@ -1,0 +1,22 @@
+{% extends "News/base.html" %}
+{% block content  %}
+  <div class="row">
+    <div class="col-md-12 mb-5">
+      <h1>{{ post.title }}</h1>
+      <h2>{{ post.date }}</h2>
+      {% if post.image %}
+        <img src="{{ post.image.url }}"
+             class="img-fluid"
+             height="900px"
+             width="900px"
+             alt="Smiley face"/>
+      {% endif %}
+      <p>{{ post.description | safe }}</p>
+      {% if post.video %}
+        <video width="500" controls>
+          <source src="{{ post.video.url }}"/>
+        </video>
+      {% endif %}
+    </div>
+  </div>
+{% endblock  %}

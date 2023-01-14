@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>Homepage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static 'News/css/bootstrap.min3.css' %}" rel="stylesheet">
+    <link href="{% static 'News/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'News/bootstrap-icons-1.10.2/bootstrap-icons.css' %}"
+          rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      {% include "News/header/header.html" %}
+      {% include "News/menu/menu.html" %}
+      {% block content %}
+      {% endblock content %}
+      {% include "News/footer/footer.html" %}
+    </div>
+    <script>
+      src = "{% static 'News/js/jquery.js' %}"
+    </script>
+    <script>
+      src = "{% static 'News/js/popper.js' %}"
+    </script>
+    <script>
+      src = "{% static 'News/js/bootstrap.js' %}"
+    </script>
+  </body>
+</html>

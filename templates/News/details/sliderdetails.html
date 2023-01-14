@@ -1,0 +1,13 @@
+{% extends "News/base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-12 mb-5">
+    <h1>{{slider.title }}</h1>
+    <h2>{{ slider.date }}</h2>
+    {% if slider.image %}
+    <img src="{{ slider.image.url }}" class="img-fluid" height="900px" width="900px" alt="Smiley face" />
+    {% endif %}
+    <p>{{ slider.description | safe }}</p>
+  </div>
+</div>
+{% endblock %}

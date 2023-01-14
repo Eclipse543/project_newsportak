@@ -1,0 +1,13 @@
+{% extends "News/base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-12 mb-5">
+    <h1>{{ politic.title }}</h1>
+    <h2>{{ politic.date }}</h2>
+    {% if politic.image %}
+    <img src="{{ politic.image.url }}" class="img-fluid" height="900px" width="900px" alt="Smiley face" />
+    {% endif %}
+    <p>{{ politic.description | safe }}</p>
+  </div>
+</div>
+{% endblock %}

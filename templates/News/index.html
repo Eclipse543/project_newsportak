@@ -1,0 +1,92 @@
+{% extends "News/base.html" %}
+{% block content %}
+  <div class="row">
+    <div class="col-md-8">
+      <h1 style="color:solid black;" >News</h1>
+      <div class="row">
+      {% for post in postNews %}
+        <div class="col-6">
+          <div class="card" style="margin: 0px;">
+            {% if post.image %}<img src="{{ post.image.url }}"class="card-img-top img-fluid" height="" width="" alt=""/>{% endif %}
+            <div class="card-body">
+              <h1 class="card-title" style=font-size:20px;>{{ post.title }}</h1>
+              <p class="card-text">{{ post.get_limit_description | safe }}</p>
+              </br>
+              <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="{% url 'details' post.slug %}">
+                      <button type="button" class="btn btn-sm btn-outline-secondary" style="background:#db301d; color:white;">View</button>
+                    </a>
+                  </div>
+                  <small class="text-muted">{{ post.date }}</small>
+                </div>
+            </div>  
+          </div>
+        </div>
+      {% endfor %}
+      </div> 
+    </div>
+    <div class="col-md-4">
+      <a href="" class="btn btn-primary btn-sm mt-3 mb-2">LATEST POST</a>
+      {% for slider in  sliderNews %}
+        <div class="carousel-item-3 position-relative">
+          <div class="d-flex mb-1">
+            {% if slider.image %}
+              <img src="{{ slider.image.url }}" style="width: 80px; height: 80px; object-fit: cover">
+            {% endif %}
+              <div class="d-flex align-items-center bg-light px-3" style="height: 80px;">
+                <a class="text-secondary font-weight-semi-bold" href="{% url 'sliderdetails' slider.slug %}">{{ slider.title }}</a>
+              </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="row mt-1">
+    <h1 style="color:brown;">Sports</h1>
+      <div class="album py-5 bg-light" style="padding-top: 0rem!important;padding-bottom: 2rem!important;">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          {% for sport in sportNews %}
+          <div class="col">
+            <div class="card shadow-sm">
+              {% if sport.image %}
+                <img src="{{ sport.image.url }}"class="card-img-top img-fluid" height="" width="" alt=""/>
+              {% endif %}
+              <div class="card-body">
+                <title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">{{ sport.title }}</text>
+                <p class="card-text">{{ sport.get_limit_description | safe }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="{% url 'sportdetails' sport.slug %}">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    </a>
+                  </div>
+                  <small class="text-muted">{{ sport.date }}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+  </div>
+  <div class="row">
+      <h1 style="color:green; font-size:30px;">Politics</h1>
+      {% for politic in politicNews %}
+        <div class="col-4">
+          <div class="card" style="margin: 0px;">
+            {% if politic.image %}<img src="{{ politic.image.url }}"class="card-img-top img-fluid" height="" width="" alt=""/>{% endif %}
+            <div class="card-body">
+              <h1 class="card-title" style=font-size:20px;>{{ politic.title }}</h1>
+              <p class="card-text">{{ politic.description | safe }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+
+                <a href="{% url 'politicdetails' politic.slug %}" class="btn btn-primary btn-sm">More...</a>
+                <small class="text-muted">{{ politic.date }}</small>
+              </div>
+            </div>  
+          </div>
+        </div>
+      {% endfor %}  
+  </div>
+{% endblock content %}
